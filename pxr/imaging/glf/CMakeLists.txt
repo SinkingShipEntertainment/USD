@@ -23,7 +23,7 @@ endif()
 if (PXR_ENABLE_OPENVDB_SUPPORT)
     list(APPEND optionalPublicClasses vdbTextureData)
     list(APPEND optionalLibs ${OPENEXR_Half_LIBRARY} ${OPENVDB_LIBRARY})
-    list(APPEND optionalIncludeDirs ${OPENVDB_INCLUDE_DIR})
+    list(APPEND optionalIncludeDirs ${OPENVDB_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIRS})
 endif()
 
 pxr_library(glf
@@ -87,7 +87,7 @@ pxr_library(glf
 
     PUBLIC_HEADERS
         api.h
-        
+
     PRIVATE_HEADERS
         rankedTypeMap.h
         stb/stb_image.h
