@@ -4,7 +4,9 @@ authors = [
     "Pixar"
 ]
 
-version = "21.08"
+# NOTE: version = <usd_major>.<usd_minor>.sse.<python_major>.<sse_major>.<sse_patch>
+# NOTE Remember to modify the `pre_build_commands` function and the `private_build_requires`
+version = "20.08.sse.2.0.0"  # Python 2
 
 description = \
     """
@@ -31,54 +33,53 @@ with scope("config") as c:
     #c.build_thread_count = "physical_cores"
 
 requires = [
-    "gcc-6.3",
-    "tbb-2017.6",
-    "glfw-3.4.0",
-    "glew-2.0.0",
-    "ptex-2.1.28",
-    "OpenSubdiv-3.4.3",
-    "openexr-2.2.0",
-    "ocio-1.0.9",
-    "oiio-2.1.16.0",
-    "osl-1.9.13",
-    "openvdb-6.1.0",
-    "PySide2",
-    "PyOpenGL",
-    "Jinja2",
 ]
 
 private_build_requires = [
     "cmake",
+    "python-2.7",
+    "PyOpenGL",
+    "Jinja2",
+    "PySide2",
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-2.7", "boost-1.70.0"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7", "boost-1.70.0"],
+    ["platform-linux", "arch-x86_64", "os-centos-7"],
 ]
+
+build_command = "bash {root}/rez_build.sh {root}"
 
 # If want to use Ninja, run the `rez-build -i --cmake-build-system "ninja"`
 # or `rez-release --cmake-build-system "ninja"`
 
 uuid = "repository.USD"
 
+def pre_build_commands():
+    command("source /opt/rh/devtoolset-6/enable")
+    env.USE_PYTHON = 2
+
 def commands():
-    # NOTE: REZ package versions can have "-" to separate the external
+    # NOTE: REZ package versions can have ".sse." to separate the external
     # version from the internal modification version.
-    # Example: 21.05-sse.1
-    # 21.05 is the USD version and sse.1 is the internal version
-    split_versions = str(version).split('-')
-    env.USD_VERSION.set(split_versions[0])
+    split_versions = str(version).split(".sse.")
+    external_version = split_versions[0]
+    internal_version = None
     if len(split_versions) == 2:
-        env.USD_PACKAGE_VERSION.set(split_versions[1])
+        internal_version = split_versions[1]
+
+    env.USD_VERSION = external_version
+    env.USD_PACKAGE_VERSION = external_version
+    if internal_version:
+        env.USD_PACKAGE_VERSION = internal_version
 
     env.USD_ROOT.append("{root}")
     env.USD_LOCATION.append("{root}")
 
-    env.USD_INCLUDE_DIR.set("{root}/include")
-    env.USD_LIBRARY_DIR.set("{root}/lib")
-    env.USD_PYTHON_DIR.set("{root}/lib/python")
+    env.USD_INCLUDE_DIR = "{root}/include"
+    env.USD_LIBRARY_DIR = "{root}/lib"
+    env.USD_PYTHON_DIR = "{root}/lib/python"
 
     env.PATH.append("{root}/bin")
     env.PATH.append("{root}/lib")
 
-    env.PYTHONPATH.append("{0}".format(env.USD_PYTHON_DIR))
+    env.PYTHONPATH.append("{root}/lib/python")
