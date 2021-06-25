@@ -19,6 +19,8 @@ pxr_library(hioOpenVDB
 
     INCLUDE_DIRS
         ${OPENVDB_INCLUDE_DIRS}
+        ${OPENVDB_INCLUDE_DIR}
+        ${OPENEXR_INCLUDE_DIRS}
 
     PUBLIC_CLASSES
         vdbAssetInterface
