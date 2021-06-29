@@ -1,4 +1,4 @@
-name = "usd"
+name = "usd_bare"
 
 authors = [
     "Pixar"
@@ -34,17 +34,7 @@ with scope("config") as c:
 # NOTE: boost will determine the python version to use
 requires = [
     "tbb-2017.6",
-    "openexr-2.2.0",
-    "ptex-2.1.28",
-    "ocio-1.0.9",
-    "alembic-1.7.10",
     "OpenSubdiv-3.4.3",
-    "PyOpenGL",
-    "PySide2",
-    "materialx-1.38.0",
-    "openvdb-6.1.0",
-    "oiio-2.1.16.0",
-    "osl-1.9.13",
 ]
 
 private_build_requires = [

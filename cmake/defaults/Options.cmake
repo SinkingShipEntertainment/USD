@@ -34,27 +34,27 @@ set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})
 option(PXR_STRICT_BUILD_MODE "Turn on additional warnings. Enforce all warnings as errors." OFF)
 option(PXR_VALIDATE_GENERATED_CODE "Validate script generated code" OFF)
 option(PXR_HEADLESS_TEST_MODE "Disallow GUI based tests, useful for running under headless CI systems." OFF)
-option(PXR_BUILD_TESTS "Build tests" ON)
-option(PXR_BUILD_EXAMPLES "Build examples" ON)
-option(PXR_BUILD_TUTORIALS "Build tutorials" ON)
-option(PXR_BUILD_USD_TOOLS "Build commandline tools" ON)
+option(PXR_BUILD_TESTS "Build tests" OFF)
+option(PXR_BUILD_EXAMPLES "Build examples" OFF)
+option(PXR_BUILD_TUTORIALS "Build tutorials" OFF)
+option(PXR_BUILD_USD_TOOLS "Build commandline tools" OFF)
 option(PXR_BUILD_IMAGING "Build imaging components" ON)
 option(PXR_BUILD_EMBREE_PLUGIN "Build embree imaging plugin" OFF)
-option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" ON) # (Marcelo): was OFF
-option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" ON) # (Marcelo): was OFF
+option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" OFF)
+option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" OFF)
 option(PXR_BUILD_USD_IMAGING "Build USD imaging components" ON)
-option(PXR_BUILD_USDVIEW "Build usdview" ON)
-option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" ON) # (Marcelo): was OFF
+option(PXR_BUILD_USDVIEW "Build usdview" OFF)
+option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" OFF)
 option(PXR_BUILD_DRACO_PLUGIN "Build the Draco plugin for USD" OFF)
 option(PXR_BUILD_PRMAN_PLUGIN "Build the PRMan imaging plugin" OFF)
-option(PXR_ENABLE_MATERIALX_SUPPORT "Enable MaterialX support" ON) # (Marcelo): was OFF
+option(PXR_ENABLE_MATERIALX_SUPPORT "Enable MaterialX support" OFF)
 option(PXR_BUILD_DOCUMENTATION "Generate doxygen documentation" OFF)
 option(PXR_ENABLE_PYTHON_SUPPORT "Enable Python based components for USD" ON)
 option(PXR_USE_PYTHON_3 "Build Python bindings for Python 3" ${REZ_USE_PYTHON_3}) # (Marcelo): was OFF
-option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" OFF) # (Marcelo): was OFF
-option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" ON) # (Marcelo): was OFF
-option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" ON)
-option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" ON) # (Marcelo): was OFF
+option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" OFF)
+option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" OFF)
+option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" OFF)
+option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" OFF)
 option(PXR_ENABLE_NAMESPACES "Enable C++ namespaces." ON)
 option(PXR_PREFER_SAFETY_OVER_SPEED
        "Enable certain checks designed to avoid crashes or out-of-bounds memory reads with malformed input files.  These checks may negatively impact performance."
