@@ -1,12 +1,11 @@
-name = "usd"
+name = "usd_bare"
 
 authors = [
     "Pixar"
 ]
 
-# NOTE: version = <usd_major>.<usd_minor>.sse.<python_major>.<sse_major>.<sse_patch>
-# NOTE Remember to modify the `pre_build_commands` function and the `private_build_requires`
-version = "20.08.sse.2.0.0"  # Python 2
+# NOTE: version = <usd_version>.sse.<sse_version>
+version = "20.08.sse.1.0.0"
 
 description = \
     """
@@ -32,31 +31,34 @@ with scope("config") as c:
 
     #c.build_thread_count = "physical_cores"
 
+# NOTE: boost will determine the python version to use
 requires = [
+    "tbb-2017.6",
+    "glew",
+    "OpenSubdiv-3.4.3",
 ]
 
 private_build_requires = [
-    "cmake",
-    "python-2.7",
-    "PyOpenGL",
     "Jinja2",
-    "PySide2",
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0"],
 ]
 
-build_command = "bash {root}/rez_build.sh {root}"
-
-# If want to use Ninja, run the `rez-build -i --cmake-build-system "ninja"`
-# or `rez-release --cmake-build-system "ninja"`
+# If want to use Ninja, run:
+# rez-build -i --cmake-build-system "ninja"
+# rez-release --cmake-build-system "ninja"
+#
+# Pass cmake arguments:
+# rez-build -i -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+# rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 
 uuid = "repository.USD"
 
 def pre_build_commands():
     command("source /opt/rh/devtoolset-6/enable")
-    env.USE_PYTHON = 2
 
 def commands():
     # NOTE: REZ package versions can have ".sse." to separate the external
