@@ -21,6 +21,16 @@
 # KIND, either express or implied. See the Apache License for the specific
 # language governing permissions and limitations under the Apache License.
 #
+
+# REZ ----------------------------------------
+set(REZ_USE_PYTHON_3 OFF)
+if($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")
+    set(REZ_USE_PYTHON_3 ON)
+endif()
+set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})
+# NOTE: Although HDF5 is in the REZ env., FindHDF5.cmake cannot find the include dir
+# --------------------------------------------
+
 option(PXR_STRICT_BUILD_MODE "Turn on additional warnings. Enforce all warnings as errors." OFF)
 option(PXR_VALIDATE_GENERATED_CODE "Validate script generated code" OFF)
 option(PXR_HEADLESS_TEST_MODE "Disallow GUI based tests, useful for running under headless CI systems." OFF)
@@ -30,21 +40,21 @@ option(PXR_BUILD_TUTORIALS "Build tutorials" ON)
 option(PXR_BUILD_USD_TOOLS "Build commandline tools" ON)
 option(PXR_BUILD_IMAGING "Build imaging components" ON)
 option(PXR_BUILD_EMBREE_PLUGIN "Build embree imaging plugin" OFF)
-option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" OFF)
-option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" OFF)
+option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" ON)
+option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" ON)
 option(PXR_BUILD_USD_IMAGING "Build USD imaging components" ON)
 option(PXR_BUILD_USDVIEW "Build usdview" ON)
-option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" OFF)
+option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" ON)
 option(PXR_BUILD_DRACO_PLUGIN "Build the Draco plugin for USD" OFF)
 option(PXR_BUILD_PRMAN_PLUGIN "Build the PRMan imaging plugin" OFF)
-option(PXR_BUILD_MATERIALX_PLUGIN "Build the MaterialX plugin for USD" OFF)
+option(PXR_BUILD_MATERIALX_PLUGIN "Build the MaterialX plugin for USD" ON)
 option(PXR_BUILD_DOCUMENTATION "Generate doxygen documentation" OFF)
 option(PXR_ENABLE_PYTHON_SUPPORT "Enable Python based components for USD" ON)
-option(PXR_USE_PYTHON_3 "Build Python bindings for Python 3" OFF)
-option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" ON)
-option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" OFF)
+option(PXR_USE_PYTHON_3 "Build Python bindings for Python 3" ${REZ_USE_PYTHON_3})
+option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" OFF)
+option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" ON)
 option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" ON)
-option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" OFF)
+option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" ON)
 option(PXR_ENABLE_NAMESPACES "Enable C++ namespaces." ON)
 
 # Determine GFX api
