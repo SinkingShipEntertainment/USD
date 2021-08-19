@@ -40,7 +40,7 @@ requires = [
     "OpenSubdiv-3.4.3",
     "PyOpenGL",
     "PySide2",
-    "materialx-1.38.0",
+    "materialx-1.37.1",
     "openvdb-6.1.0",
     "oiio-2.1.16.0",
     "osl-1.9.13",
@@ -51,7 +51,7 @@ private_build_requires = [
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "glew-2.0.0", "boost-1.61.0"],
     ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0"],
 ]
 
