@@ -32,6 +32,7 @@ with scope("config") as c:
     #c.build_thread_count = "physical_cores"
 
 requires = [
+    "glew-2.0.0",
     "tbb-2017.6",
     "openexr-2.2.0",
     "ptex-2.1.28",
@@ -51,7 +52,7 @@ private_build_requires = [
 ]
 
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "glew-2.0.0", "boost-1.61.0"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0"],
     ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0"],
 ]
 
@@ -93,3 +94,5 @@ def commands():
     env.PATH.append("{root}/lib")
 
     env.PYTHONPATH.append("{root}/lib/python")
+
+    env.LD_LIBRARY_PATH.append("{root}/lib")
