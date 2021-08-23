@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "21.05.sse.1.0.1"
+version = "21.05.sse.1.0.0"
 
 description = \
     """
@@ -41,7 +41,7 @@ requires = [
     "OpenSubdiv-3.4.3",
     "PyOpenGL",
     "PySide2",
-    "materialx-1.38.1",
+    "materialx-1.38.0",
     "openvdb-6.1.0",
     "oiio-2.1.16.0",
     "osl-1.9.13",
