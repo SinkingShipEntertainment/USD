@@ -35,7 +35,6 @@ requires = [
     "glew-2.0.0",
     "tbb-2017.6",
     "openexr-2.2.0",
-    "ptex-2.1.28",
     "ocio-1.0.9",
     "alembic-1.7.10",
     "OpenSubdiv-3.4.3",
@@ -51,9 +50,15 @@ private_build_requires = [
     "Jinja2",
 ]
 
+# NOTE: Unfortunately, Ptex conflicts with Maya-Usd plugin and Arnold plugin for Maya.
+# So, while building the maya-usd plugin against USD, we need to build it against a
+# USD that was not build with Ptex. That means, OpenSubdiv and oiio will need to be
+# build with/without Ptex as REZ variants as well.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "ptex-2.1.28"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "ptex-2.1.28"],
 ]
 
 # If want to use Ninja, run:
