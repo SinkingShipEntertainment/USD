@@ -29,6 +29,12 @@ if($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")
 endif()
 set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})
 # NOTE: Although HDF5 is in the REZ env., FindHDF5.cmake cannot find the include dir
+
+# NOTE: Do not use Ptex unless it is in the REZ environment
+set(REZ_ENABLE_PTEX OFF)
+if(DEFINED $ENV{REZ_PTEX_ROOT})
+    set(REZ_ENABLE_PTEX ON)
+endif()
 # --------------------------------------------
 
 option(PXR_STRICT_BUILD_MODE "Turn on additional warnings. Enforce all warnings as errors." OFF)
@@ -53,7 +59,7 @@ option(PXR_ENABLE_PYTHON_SUPPORT "Enable Python based components for USD" ON)
 option(PXR_USE_PYTHON_3 "Build Python bindings for Python 3" ${REZ_USE_PYTHON_3}) # (Marcelo): was OFF
 option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" OFF) # (Marcelo): was OFF
 option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" ON) # (Marcelo): was OFF
-option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" ON)
+option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" ${REZ_ENABLE_PTEX})
 option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" ON) # (Marcelo): was OFF
 option(PXR_ENABLE_NAMESPACES "Enable C++ namespaces." ON)
 option(PXR_PREFER_SAFETY_OVER_SPEED
