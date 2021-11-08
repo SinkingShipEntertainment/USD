@@ -33,9 +33,9 @@ with scope("config") as c:
 
 requires = [
     "glew-2.0.0",
-    "tbb-2017.6",
-    "openexr-2.2.0",
-    "ocio-1.0.9",
+    "tbb-2018.6",
+    "openexr-2.3.0",
+    "ocio-1.1.0",
     "alembic-1.7.10",
     "OpenSubdiv-3.4.3",
     "PyOpenGL",
