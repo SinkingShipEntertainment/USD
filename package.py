@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "21.05.sse.1.0.0"
+version = "21.08.sse.1.0.0"
 
 description = \
     """
@@ -33,9 +33,9 @@ with scope("config") as c:
 
 # NOTE: boost will determine the python version to use
 requires = [
-    "tbb-2017.6",
-    "openexr-2.2.0",
-    "ocio-1.0.9",
+    "tbb-2018.6",
+    "openexr-2.3.0",
+    "ocio-1.1.0",
     "alembic-1.7.10",
     "OpenSubdiv-3.4.3",
     "PyOpenGL",
