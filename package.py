@@ -98,4 +98,7 @@ def commands():
     env.PATH.append("{root}/bin")
     env.PATH.append("{root}/lib")
 
+    env.LD_LIBRARY_PATH.append("{root}/bin")
+    env.LD_LIBRARY_PATH.append("{root}/lib")
+
     env.PYTHONPATH.append("{root}/lib/python")
