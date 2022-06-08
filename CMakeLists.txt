@@ -24,8 +24,8 @@ include(Packages)
 
 # This has to be defined after Packages is included, because it relies on the
 # discovered path to the python executable.
-set(PXR_PYTHON_SHEBANG "${PYTHON_EXECUTABLE}" 
-    CACHE 
+set(PXR_PYTHON_SHEBANG "${PYTHON_EXECUTABLE}"
+    CACHE
     STRING
     "Replacement path for Python #! line."
 )
@@ -58,6 +58,6 @@ endif()
 
 if (PXR_BUILD_DOCUMENTATION)
     pxr_build_documentation()
-endif()   
+endif()
 
 pxr_toplevel_epilogue()

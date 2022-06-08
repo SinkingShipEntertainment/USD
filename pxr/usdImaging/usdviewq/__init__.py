@@ -76,7 +76,7 @@ class Launcher(object):
             if arg_parse_result.traceToFile:
                 from pxr import Trace
                 traceCollector = Trace.Collector()
-            
+
                 if arg_parse_result.tracePython:
                     traceCollector.pythonTracingEnabled = True
 
@@ -128,7 +128,7 @@ class Launcher(object):
                         UsdAppUtils.rendererArgs.HYDRA_DISABLED_OPTION_STRING
                             ),
                 allowHydraDisabled=True)
-        
+
         parser.add_argument('--select', action='store', default='/',
                             dest='primPath', type=str,
                             help='A prim path to initially select and frame')
@@ -227,7 +227,7 @@ class Launcher(object):
         parser.add_argument('--quitAfterStartup', action='store_true',
                             dest='quitAfterStartup',
                             help='quit immediately after start up')
-                            
+
         parser.add_argument('--sessionLayer', default=None, type=str,
                             help= "If specified, the stage will be opened "
                             "with the 'sessionLayer' in place of the default "
@@ -245,11 +245,11 @@ class Launcher(object):
 
     def ValidateOptions(self, arg_parse_result):
         '''
-        Called by Run(), after ParseOptions() is called. Validates and 
-        potentially modifies the parsed arguments. Raises InvalidUsdviewOption 
-        if an invalid option is found. If a derived class has overridden 
+        Called by Run(), after ParseOptions() is called. Validates and
+        potentially modifies the parsed arguments. Raises InvalidUsdviewOption
+        if an invalid option is found. If a derived class has overridden
         ParseOptions(), ValidateOptions() is an opportunity to process the
-        options and transmute other "core" options in response.  If 
+        options and transmute other "core" options in response.  If
         overridden, derived classes should likely first call the base method.
         '''
 
@@ -292,17 +292,17 @@ class Launcher(object):
         the Stage for the given usdFile.  Base implementation
         creates a default asset context for the usdFile asset, but derived
         classes can do more sophisticated resolver and context configuration.
-        
+
         Will be called each time a new stage is opened.
 
         It is not necessary to create an ArResolverContext for every UsdStage
         one opens, as the Stage will use reasonable fallback behavior if no
         context is provided.  For usdview, configuring an asset context by
-        default is reasonable, and allows clients that embed usdview to 
+        default is reasonable, and allows clients that embed usdview to
         achieve different behavior when needed.
         """
         from pxr import Ar
-        
+
         r = Ar.GetResolver()
 
         # ConfigureResolverForAsset no longer exists under Ar 2.0; this
@@ -337,7 +337,7 @@ class Launcher(object):
         # Initialize concurrency limit as early as possible so that it is
         # respected by subsequent imports.
         (app, appController) = self.LaunchPreamble(arg_parse_result)
-        
+
         if arg_parse_result.quitAfterStartup:
             # Enqueue event to shutdown application. We don't use quit() because
             # it doesn't trigger the closeEvent() on the main window which is

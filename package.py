@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "21.08.sse.1.0.0"
+version = "21.08.sse.1.1.0"
 
 description = \
     """
@@ -47,7 +47,7 @@ requires = [
 
 private_build_requires = [
     "Jinja2",
-    "PySide2",
+    "pyside2_setup-5.14.1",
 ]
 
 # NOTE: Unfortunately, Ptex conflicts with Maya-Usd plugin and Arnold plugin for Maya.

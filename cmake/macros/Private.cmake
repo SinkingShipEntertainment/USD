@@ -261,10 +261,17 @@ function(_install_pyside_ui_files LIBRARY_NAME)
         get_filename_component(outFileName ${uiFile} NAME_WE)
         get_filename_component(uiFilePath ${uiFile} ABSOLUTE)
         set(outFilePath "${CMAKE_CURRENT_BINARY_DIR}/${outFileName}.py")
+        get_filename_component(pysideUicBinName ${PYSIDEUICBINARY} NAME_WLE)
+        if("${pysideUicBinName}" STREQUAL "uic")
+            # Newer versions of Qt have deprecated pyside2-uic. It
+            # has been replaced by "uic" which needs extra arg for
+            # generating python output (instead of default C++ ).
+            set(PYSIDEUIC_EXTRA_ARGS -g python)
+        endif()
         add_custom_command(
             OUTPUT ${outFilePath}
             COMMAND "${PYSIDEUICBINARY}"
-            ARGS -o ${outFilePath} ${uiFilePath}
+            ARGS ${PYSIDEUIC_EXTRA_ARGS} -o ${outFilePath} ${uiFilePath}
             MAIN_DEPENDENCY "${uiFilePath}"
             COMMENT "Generating Python for ${uiFilePath} ..."
             VERBATIM
@@ -1018,7 +1025,7 @@ function(_pxr_python_module NAME)
     )
 
     # Ensure the Python header directory is included as a system include
-    # directory. This is a workaround for an issue in which Python headers 
+    # directory. This is a workaround for an issue in which Python headers
     # unequivocally redefine macros defined in standard library headers.
     # This behavior prevents users from running strict builds with
     # PXR_STRICT_BUILD_MODE as the redefinition warnings would cause build
@@ -1240,7 +1247,7 @@ function(_pxr_library NAME)
         PROPERTIES
             FOLDER "${folder}"
             POSITION_INDEPENDENT_CODE ON
-            IMPORT_PREFIX "${args_PREFIX}"            
+            IMPORT_PREFIX "${args_PREFIX}"
             PREFIX "${args_PREFIX}"
             SUFFIX "${args_SUFFIX}"
             PUBLIC_HEADER "${args_PUBLIC_HEADERS}"
@@ -1310,7 +1317,7 @@ function(_pxr_library NAME)
                 COMMAND
                     ${CMAKE_COMMAND} -E make_directory ${docBuildDir}
                 COMMAND
-                    ${CMAKE_COMMAND} -E copy 
+                    ${CMAKE_COMMAND} -E copy
                     ${CMAKE_CURRENT_SOURCE_DIR}/${doxygenFile}
                     ${docBuildDir}/${doxygenFile}
                 MAIN_DEPENDENCY
@@ -1399,7 +1406,7 @@ function(_pxr_library NAME)
                 PUBLIC_HEADER DESTINATION ${headerInstallPrefix}
             )
         endif()
-        
+
         if(NOT isPlugin)
             export(TARGETS ${NAME}
                 APPEND
