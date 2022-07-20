@@ -27,7 +27,7 @@
 # below may wind up stomping over this value.
 set(build_shared_libs "${BUILD_SHARED_LIBS}")
 
-# Core USD Package Requirements 
+# Core USD Package Requirements
 # ----------------------------------------------
 
 # Threads.  Save the libraries needed in PXR_THREAD_LIBS;  we may modify
@@ -41,15 +41,15 @@ set(PXR_THREAD_LIBS "${CMAKE_THREAD_LIBS_INIT}")
 # disable boost-provided cmake config, based on the boost version found.
 find_package(Boost REQUIRED)
 
-# Boost provided cmake files (introduced in boost version 1.70) result in 
-# inconsistent build failures on different platforms, when trying to find boost 
-# component dependencies like python, program options, etc. Refer some related 
+# Boost provided cmake files (introduced in boost version 1.70) result in
+# inconsistent build failures on different platforms, when trying to find boost
+# component dependencies like python, program options, etc. Refer some related
 # discussions:
 # https://github.com/boostorg/python/issues/262#issuecomment-483069294
 # https://github.com/boostorg/boost_install/issues/12#issuecomment-508683006
 #
 # Hence to avoid issues with Boost provided cmake config, Boost_NO_BOOST_CMAKE
-# is enabled by default for boost version 1.70 and above. If a user explicitly 
+# is enabled by default for boost version 1.70 and above. If a user explicitly
 # set Boost_NO_BOOST_CMAKE to Off, following will be a no-op.
 if (${Boost_VERSION_STRING} VERSION_GREATER_EQUAL "1.70")
     option(Boost_NO_BOOST_CMAKE "Disable boost-provided cmake config" ON)
@@ -80,8 +80,8 @@ if(PXR_ENABLE_PYTHON_SUPPORT)
 
     if (${Boost_VERSION_STRING} VERSION_GREATER_EQUAL "1.67")
         # As of boost 1.67 the boost_python component name includes the
-        # associated Python version (e.g. python27, python36). 
-        # XXX: After boost 1.73, boost provided config files should be able to 
+        # associated Python version (e.g. python27, python36).
+        # XXX: After boost 1.73, boost provided config files should be able to
         # work without specifying a python version!
         # https://github.com/boostorg/boost_install/blob/master/BoostConfig.cmake
 
@@ -152,10 +152,10 @@ if (PXR_BUILD_DOCUMENTATION)
     find_program(DOXYGEN_EXECUTABLE
         NAMES doxygen
     )
-    if (EXISTS ${DOXYGEN_EXECUTABLE})                                        
-        message(STATUS "Found doxygen: ${DOXYGEN_EXECUTABLE}") 
+    if (EXISTS ${DOXYGEN_EXECUTABLE})
+        message(STATUS "Found doxygen: ${DOXYGEN_EXECUTABLE}")
     else()
-        message(FATAL_ERROR 
+        message(FATAL_ERROR
                 "doxygen not found, required for PXR_BUILD_DOCUMENTATION")
     endif()
 
@@ -163,7 +163,7 @@ if (PXR_BUILD_DOCUMENTATION)
         NAMES dot
     )
     if (EXISTS ${DOT_EXECUTABLE})
-        message(STATUS "Found dot: ${DOT_EXECUTABLE}") 
+        message(STATUS "Found dot: ${DOT_EXECUTABLE}")
     else()
         message(FATAL_ERROR
                 "dot not found, required for PXR_BUILD_DOCUMENTATION")
@@ -269,7 +269,8 @@ endif()
 
 if (PXR_BUILD_USDVIEW)
     # --PySide
-    find_package(PySide REQUIRED)
+    #find_package(PySide REQUIRED)
+    find_package(PySide2REZ REQUIRED)
     # --PyOpenGL
     find_package(PyOpenGL REQUIRED)
 endif()
