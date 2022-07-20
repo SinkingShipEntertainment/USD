@@ -2,3 +2,5 @@
 .DS_Store
 .AppleDouble
 
+.vscode
+_rez_build

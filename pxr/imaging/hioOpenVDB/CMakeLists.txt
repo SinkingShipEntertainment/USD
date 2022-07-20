@@ -32,6 +32,8 @@ pxr_library(hioOpenVDB
 
     INCLUDE_DIRS
         ${OPENVDB_INCLUDE_DIR}
+        ${OPENVDB_INCLUDE_DIR}
+        ${OPENEXR_INCLUDE_DIRS}
 
     PUBLIC_CLASSES
         utils
