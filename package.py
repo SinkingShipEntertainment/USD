@@ -35,7 +35,7 @@ with scope("config") as c:
 requires = [
     "tbb-2018.6",
     "boost-1.70.0",
-    "OpenSubdiv-3.4.4",  # not done yet (we have 3.4.3)
+    "OpenSubdiv-3.4.4",
     "oiio-2.1.16.0",
     "ocio-1.1.0",
     "osl-1.9.13",  # usd wants 1.8.12   but I think this will work as well
@@ -56,8 +56,8 @@ private_build_requires = [
 # USD that was not build with Ptex. That means, OpenSubdiv and oiio will need to be
 # build with/without Ptex as REZ variants as well.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "ptex-2.1.33"],  # not done yet (we have 2.1.28)
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "ptex-2.1.33"],
 ]
 
 # If want to use Ninja, run:
