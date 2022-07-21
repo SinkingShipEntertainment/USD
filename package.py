@@ -38,8 +38,8 @@ requires = [
     "OpenSubdiv-3.4.4",
     "oiio-2.1.16.0",
     "ocio-1.1.0",
-    "osl-1.9.13",  # usd wants 1.8.12   but I think this will work as well
-    "PyOpenGL-3.1.5",  # we also have 3.1.6
+    "osl-1.9.13",  # usd wants 1.8.12, but I think this will work as well
+    "PyOpenGL-3.1.6",  # usd wants 3.1.5, but I think this will work as well
     "alembic-1.7.10",
     "openexr-2.3.0",
     "materialx-1.38.0",
