@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "21.08.sse.1.1.0"
+version = "21.08.sse.1.0.0"
 
 description = \
     """
@@ -55,10 +55,10 @@ private_build_requires = [
 # USD that was not build with Ptex. That means, OpenSubdiv and oiio will need to be
 # build with/without Ptex as REZ variants as well.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "ptex-2.1.28"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "ptex-2.1.28"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "python-2.7.5", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.61.0", "python-2.7.5", "ptex-2.1.28"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "python-3.7.7", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "boost-1.70.0", "python-3.7.7", "ptex-2.1.28"],
 ]
 
 # If want to use Ninja, run:
