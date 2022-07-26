@@ -4,6 +4,12 @@ authors = [
     "Pixar"
 ]
 
+# NOTE: We are moving to this version because Houdini 19.5 ships with this version.
+# USD inside Houdini 19.5 was also built with Ar 2.0, so we need to build this one
+# with Ar 2.0 as well. Also, since we are building this USD mainly to be used in Maya
+# 2023, and Maya 2023 is Python 3.9.7, we are building this USd only against that
+# Python version.
+
 # NOTE: version = <usd_version>.sse.<sse_version>
 version = "22.05.sse.1.0.0"
 
@@ -31,7 +37,6 @@ with scope("config") as c:
 
     #c.build_thread_count = "physical_cores"
 
-# NOTE: boost will determine the python version to use
 requires = [
     "tbb-2018.6",
     "boost-1.70.0",
