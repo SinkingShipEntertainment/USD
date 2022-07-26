@@ -49,6 +49,7 @@ requires = [
     "openexr-2.3.0",
     "materialx-1.38.0",
     "openvdb-6.1.0",
+    "numpy",  # usdview is using it (I guess)
 ]
 
 private_build_requires = [
