@@ -11,7 +11,7 @@ authors = [
 # Python version.
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.05.sse.1.0.0"
+version = "22.05.sse.1.0.1"
 
 description = \
     """
