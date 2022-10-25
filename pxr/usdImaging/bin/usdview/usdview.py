@@ -25,6 +25,7 @@
 
 from __future__ import print_function
 import sys
+from pxr import UsdMtlx  # (Marcelo): UsdAppUtils requires UsdImagingGL which causes the 'double free or corruption' error from MALLOC_CHECK. Importing UsdMtlx first fixes it, don't know why"
 import pxr.Usdviewq as Usdviewq
 
 if __name__ == '__main__':

@@ -24,6 +24,7 @@
 #
 
 from pxr import Usd
+from pxr import UsdMtlx  # (Marcelo): UsdAppUtils requires UsdImagingGL which causes the 'double free or corruption' error from MALLOC_CHECK. Importing UsdMtlx first fixes it, don't know why"
 from pxr import UsdAppUtils
 from pxr import Tf
 
