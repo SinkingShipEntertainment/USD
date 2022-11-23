@@ -1970,11 +1970,8 @@ HdSt_CodeGen::_GenerateComputeParameters(HgiShaderFunctionDesc * const csDesc)
             csDesc, name.GetString() + "Offset", _tokens->_int);
         HgiShaderFunctionAddConstantParam(
             csDesc, name.GetString() + "Stride", _tokens->_int);
-<<<<<<< HEAD
 
         _genDefines << "#define HD_HAS_" << name << " 1\n";
-=======
->>>>>>> Apply SideFx fix for fragment_shader compile bug related to opacity - usd PR 1863
 
         _EmitDeclaration(&_resCommon,
                 name,

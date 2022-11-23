@@ -4,14 +4,8 @@ authors = [
     "Pixar"
 ]
 
-# NOTE: We are moving to this version because Houdini 19.5 ships with this version.
-# USD inside Houdini 19.5 was also built with Ar 2.0, so we need to build this one
-# with Ar 2.0 as well. Also, since we are building this USD mainly to be used in Maya
-# 2023, and Maya 2023 is Python 3.9.7, we are building this USd only against that
-# Python version.
-
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.05.sse.1.0.1"
+version = "22.11.sse.1.0.0"
 
 description = \
     """
@@ -38,17 +32,17 @@ with scope("config") as c:
     #c.build_thread_count = "physical_cores"
 
 requires = [
-    "tbb-2018.6",
+    "tbb-2019.6",
     "boost-1.70.0",
-    "OpenSubdiv-3.4.4",
-    "oiio-2.1.16.0",
+    "OpenSubdiv-3.5.0",
+    "oiio-2.1.16.0.sse.2",  # we bump versions of the dependencies
     "ocio-1.1.0",
-    "osl-1.9.13",  # usd wants 1.8.12, but I think this will work as well
+    "osl-1.10.9",
     "PyOpenGL-3.1.6",  # usd wants 3.1.5, but I think this will work as well
     "alembic-1.7.10",
-    "openexr-2.3.0",
-    "materialx-1.38.0",
-    "openvdb-6.1.0",
+    "openexr-2.4.3",
+    "materialx-1.38.6",
+    "openvdb-7.1.0",
     "numpy",  # usdview is using it (I guess)
 ]
 
@@ -63,7 +57,7 @@ private_build_requires = [
 # build with/without Ptex as REZ variants as well.
 variants = [
     ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "ptex-2.1.33"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "ptex-2.3.2"],
 ]
 
 # If want to use Ninja, run:
