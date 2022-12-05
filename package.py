@@ -56,6 +56,8 @@ private_build_requires = [
 # USD that was not build with Ptex. That means, OpenSubdiv and oiio will need to be
 # build with/without Ptex as REZ variants as well.
 variants = [
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7", "ptex-2.3.2"],
     ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "!ptex"],
     ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "ptex-2.3.2"],
 ]
