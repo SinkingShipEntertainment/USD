@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.11.sse.1.0.0"
+version = "22.11.sse.1.0.1"
 
 description = \
     """
@@ -69,6 +69,11 @@ variants = [
 # Pass cmake arguments:
 # rez-build -i -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 # rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+#
+# For debugging purpose, developer can just build locally
+# rez-build -i --bt Debug --variants 3 -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+# Or, for releasing...
+# rez-release --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 
 uuid = "repository.USD"
 

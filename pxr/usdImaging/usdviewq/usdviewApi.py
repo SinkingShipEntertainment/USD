@@ -38,6 +38,12 @@ class UsdviewApi(object):
         self.__appController = appController
 
     @property
+    def appController(self):
+        """Usdview's appController object."""
+
+        return self.__appController
+
+    @property
     def dataModel(self):
         """Usdview's active data model object."""
 
