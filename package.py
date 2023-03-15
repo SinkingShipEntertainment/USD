@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.11.sse.1.0.1"
+version = "22.11.sse.2.0.0"
 
 description = \
     """
@@ -33,16 +33,16 @@ with scope("config") as c:
 
 requires = [
     "tbb-2019.6",
-    "boost-1.70.0",
+    "boost-1.76.0",
     "OpenSubdiv-3.5.0",
-    "oiio-2.1.16.0.sse.2",  # we bump versions of the dependencies
-    "ocio-1.1.0",
-    "osl-1.10.9",
-    "PyOpenGL-3.1.6",  # usd wants 3.1.5, but I think this will work as well
-    "alembic-1.7.10",
-    "openexr-2.4.3",
+    "oiio-2.3.15.0.sse.2",
+    "ocio-2.1.1",
+    "osl-1.12.10",
+    "PyOpenGL-3.1.6",
+    "alembic-1.8.5",
+    "openexr-3.1.5",
     "materialx-1.38.6",
-    "openvdb-7.1.0",
+    "openvdb-9.1.0",
     "numpy",  # usdview is using it (I guess)
 ]
 
@@ -56,23 +56,18 @@ private_build_requires = [
 # USD that was not build with Ptex. That means, OpenSubdiv and oiio will need to be
 # build with/without Ptex as REZ variants as well.
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7", "ptex-2.3.2"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "!ptex"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7", "ptex-2.3.2"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7", "ptex-2.3.2"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9", "!ptex"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9", "ptex-2.3.2"],
 ]
 
 # If want to use Ninja, run:
 # rez-build -i --cmake-build-system "ninja"
 # rez-release --cmake-build-system "ninja"
 #
-# Pass cmake arguments:
-# rez-build -i -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
-# rez-release -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
-#
-# For debugging purpose, developer can just build locally
-# rez-build -i --bt Debug --variants 3 -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
-# Or, for releasing...
+# Pass cmake arguments (with debug symbols):
+# rez-build -i --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 # rez-release --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
 
 uuid = "repository.USD"
