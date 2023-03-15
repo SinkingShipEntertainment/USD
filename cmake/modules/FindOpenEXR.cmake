@@ -257,6 +257,7 @@ if (OPENEXR_FOUND)
     # in the same cmake variable. Since we updated openexr to 3.1.5, we need to
     # combine here. The libraries are already combined and the name of the cmake
     # variable matches ('OPENEXR_LIBRARIES').
+    list(APPEND OPENEXR_INCLUDE_DIR ${ILMBASE_INCLUDE_PATH})
     list(APPEND OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR})
     list(APPEND OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDES})
     list(APPEND OPENEXR_INCLUDE_DIRS ${ILMBASE_INCLUDE_DIR})
@@ -271,7 +272,9 @@ mark_as_advanced(
     OPENEXR_IMATH_LIBRARY
     OPENEXR_IEX_LIBRARY
     OPENEXR_HALF_LIBRARY
-    OPENEXR_VERSION)
+    OPENEXR_VERSION
+    OPENEXR_INCLUDE_DIR
+    OPENEXR_INCLUDE_DIRS)
 
 # Restore the original CMAKE_FIND_LIBRARY_SUFFIXES
 set (CMAKE_FIND_LIBRARY_SUFFIXES ${_openexr_orig_suffixes})
