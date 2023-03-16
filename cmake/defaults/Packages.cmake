@@ -341,6 +341,23 @@ if(REQUIRES_Imath)
     if (NOT Imath_FOUND)
         MESSAGE(STATUS "Imath not found. Looking for OpenEXR instead.")
         find_package(OpenEXR REQUIRED)
+    else ()
+        # NOTE (Marcelo): Imath is being found, but the CMAKe variables that USD
+        # relies on are not being set. We set here.
+        get_target_property(IMATH_INCLUDES Imath::Imath INTERFACE_INCLUDE_DIRECTORIES)
+        get_target_property(ILMBASE_INCLUDES Imath::Imath INTERFACE_INCLUDE_DIRECTORIES)
+        get_target_property(ILMBASE_IMATH_LIBRARY Imath::Imath INTERFACE_LINK_LIBRARIES)
+        get_target_property(IMATH_LIBRARY Imath::Imath INTERFACE_LINK_LIBRARIES)
+        set (ILMBASE_LIBRARIES ${ILMBASE_IMATH_LIBRARY})
+        set (ILMBASE_FOUND true)
+
+        set (OPENEXR_LIBRARIES ${ILMBASE_LIBRARIES})
+
+        list(APPEND OPENEXR_INCLUDE_DIRS ${IMATH_INCLUDES})
+        list(APPEND OPENEXR_INCLUDE_DIRS ${ILMBASE_INCLUDES})
+
+        list(APPEND OPENEXR_INCLUDE_DIR ${IMATH_INCLUDES})
+        list(APPEND OPENEXR_INCLUDE_DIR ${ILMBASE_INCLUDES})
     endif()
 endif()
 
