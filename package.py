@@ -40,7 +40,7 @@ requires = [
     "osl-1.12.10",
     "PyOpenGL-3.1.6",
     "alembic-1.8.5",
-    "openexr-3.1.5",
+    "openexr-3.1.5",  # openexr 3.x+ is built with Imath 3.x+
     "materialx-1.38.6",
     "openvdb-9.1.0",
     "numpy",  # usdview is using it (I guess)
