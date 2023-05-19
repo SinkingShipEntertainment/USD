@@ -25,6 +25,9 @@
 # --------------------------------------------
 # REZ
 # --------------------------------------------
+set(Boost_NO_BOOST_CMAKE ON)
+set(Boost_NO_SYSTEM_PATHS True)
+
 # Alembic
 # NOTE: Although HDF5 is in the REZ env., FindHDF5.cmake cannot find the include dir
 set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})

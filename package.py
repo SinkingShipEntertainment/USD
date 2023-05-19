@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.11.sse.2.0.0"
+version = "23.05.sse.1.0.0"
 
 description = \
     """
@@ -15,19 +15,10 @@ description = \
     """
 
 with scope("config") as c:
-    # Determine location to release: internal (int) vs external (ext)
-
-    # NOTE: Modify this variable to reflect the current package situation
-    release_as = "ext"
-
     # The `c` variable here is actually rezconfig.py
     # `release_packages_path` is a variable defined inside rezconfig.py
-
     import os
-    if release_as == "int":
-        c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_INT"]
-    elif release_as == "ext":
-        c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
+    c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
 
     #c.build_thread_count = "physical_cores"
 
@@ -63,12 +54,12 @@ variants = [
 ]
 
 # If want to use Ninja, run:
-# rez-build -i --cmake-build-system "ninja"
-# rez-release --cmake-build-system "ninja"
+# rez-build -i --cmake-build-system "ninja" --bt Debug
+# rez-release --cmake-build-system "ninja" --bt Debug
 #
 # Pass cmake arguments (with debug symbols):
-# rez-build -i --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
-# rez-release --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+# rez-build -i --bt Debug
+# rez-release --bt Debug
 
 uuid = "repository.USD"
 
