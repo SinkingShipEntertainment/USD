@@ -25,6 +25,9 @@
 # --------------------------------------------
 # REZ
 # --------------------------------------------
+set(Boost_NO_BOOST_CMAKE ON)
+set(Boost_NO_SYSTEM_PATHS True)
+
 # Python
 set(REZ_USE_PYTHON_3 OFF)
 if($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")

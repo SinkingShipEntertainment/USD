@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "22.11.sse.2.0.0"
+version = "22.11.sse.2.0.1"
 
 description = \
     """
@@ -41,7 +41,7 @@ requires = [
     "PyOpenGL-3.1.6",
     "alembic-1.8.5",
     "openexr-3.1.5",  # openexr 3.x+ is built with Imath 3.x+
-    "materialx-1.38.6",
+    "materialx-1.38.4",  # 1.38.4 because Houdini 19.5/20.0 uses it
     "openvdb-9.1.0",
     "numpy",  # usdview is using it (I guess)
 ]
@@ -67,8 +67,8 @@ variants = [
 # rez-release --cmake-build-system "ninja"
 #
 # Pass cmake arguments (with debug symbols):
-# rez-build -i --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
-# rez-release --bt Debug -- -DBoost_NO_BOOST_CMAKE=On -DBoost_NO_SYSTEM_PATHS=True
+# rez-build -i --bt Debug
+# rez-release --bt Debug
 
 uuid = "repository.USD"
 
