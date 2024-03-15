@@ -24,28 +24,28 @@
 option(PXR_STRICT_BUILD_MODE "Turn on additional warnings. Enforce all warnings as errors." OFF)
 option(PXR_VALIDATE_GENERATED_CODE "Validate script generated code" OFF)
 option(PXR_HEADLESS_TEST_MODE "Disallow GUI based tests, useful for running under headless CI systems." OFF)
-option(PXR_BUILD_TESTS "Build tests" ON)
-option(PXR_BUILD_EXAMPLES "Build examples" ON)
-option(PXR_BUILD_TUTORIALS "Build tutorials" ON)
+option(PXR_BUILD_TESTS "Build tests" OFF) # Marcelo: was ON
+option(PXR_BUILD_EXAMPLES "Build examples" OFF) # Marcelo: was ON
+option(PXR_BUILD_TUTORIALS "Build tutorials" OFF) # Marcelo: was ON
 option(PXR_BUILD_USD_TOOLS "Build commandline tools" ON)
 option(PXR_BUILD_IMAGING "Build imaging components" ON)
 option(PXR_BUILD_EMBREE_PLUGIN "Build embree imaging plugin" OFF)
-option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" OFF)
-option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" OFF)
+option(PXR_BUILD_OPENIMAGEIO_PLUGIN "Build OpenImageIO plugin" ON) # Marcelo: was OFF
+option(PXR_BUILD_OPENCOLORIO_PLUGIN "Build OpenColorIO plugin" ON) # Marcelo: was OFF
 option(PXR_BUILD_USD_IMAGING "Build USD imaging components" ON)
 option(PXR_BUILD_USDVIEW "Build usdview" ON)
-option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" OFF)
+option(PXR_BUILD_ALEMBIC_PLUGIN "Build the Alembic plugin for USD" ON) # Marcelo: was OFF
 option(PXR_BUILD_DRACO_PLUGIN "Build the Draco plugin for USD" OFF)
 option(PXR_BUILD_PRMAN_PLUGIN "Build the PRMan imaging plugin" OFF)
-option(PXR_ENABLE_MATERIALX_SUPPORT "Enable MaterialX support" OFF)
+option(PXR_ENABLE_MATERIALX_SUPPORT "Enable MaterialX support" ON) # Marcelo: was OFF
 option(PXR_BUILD_DOCUMENTATION "Generate doxygen documentation" OFF)
 option(PXR_BUILD_PYTHON_DOCUMENTATION "Generate Python documentation" OFF)
 option(PXR_ENABLE_PYTHON_SUPPORT "Enable Python based components for USD" ON)
-option(PXR_USE_DEBUG_PYTHON "Build with debug python" OFF)
-option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" OFF)
-option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" OFF)
+option(PXR_USE_DEBUG_PYTHON "Build with debug python" ON) # Marcelo: was OFF
+option(PXR_ENABLE_HDF5_SUPPORT "Enable HDF5 backend in the Alembic plugin for USD" ON) # Marcelo: was OFF
+option(PXR_ENABLE_OSL_SUPPORT "Enable OSL (OpenShadingLanguage) based components" ON) # Marcelo: was OFF
 option(PXR_ENABLE_PTEX_SUPPORT "Enable Ptex support" OFF)
-option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" OFF)
+option(PXR_ENABLE_OPENVDB_SUPPORT "Enable OpenVDB support" ON) # Marcelo: was OFF
 option(PXR_ENABLE_NAMESPACES "Enable C++ namespaces." ON)
 option(PXR_PREFER_SAFETY_OVER_SPEED
        "Enable certain checks designed to avoid crashes or out-of-bounds memory reads with malformed input files.  These checks may negatively impact performance."
@@ -195,11 +195,11 @@ endif()
 # Error out if user is building monolithic library on windows with draco plugin
 # enabled. This currently results in missing symbols.
 if (${PXR_BUILD_DRACO_PLUGIN} AND ${PXR_BUILD_MONOLITHIC} AND WIN32)
-    message(FATAL_ERROR 
+    message(FATAL_ERROR
         "Draco plugin can not be enabled for monolithic builds on Windows")
 endif()
 
-# Make sure PXR_BUILD_DOCUMENTATION and PXR_ENABLE_PYTHON_SUPPORT are enabled 
+# Make sure PXR_BUILD_DOCUMENTATION and PXR_ENABLE_PYTHON_SUPPORT are enabled
 # if PXR_BUILD_PYTHON_DOCUMENTATION is enabled
 if (${PXR_BUILD_PYTHON_DOCUMENTATION})
     if (NOT ${PXR_BUILD_DOCUMENTATION})
