@@ -29,7 +29,7 @@ requires = [
     "OpenSubdiv-3.6.0",
     "materialx-1.38.9",
     "openvdb-9.1.0",
-    "ocio-2.3.2",
+    "ocio-2.1.3",
     "oiio-2.5.9.0",
     "osl-1.13.7",
 ]
