@@ -26,7 +26,7 @@
 # -------------------------
 # REZ
 # -------------------------
-set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT}) # because of HDF5 include
+set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})
 # -------------------------
 
 # Save the current value of BUILD_SHARED_LIBS and restore it at
