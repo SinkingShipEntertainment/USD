@@ -43,13 +43,10 @@ variants = [
     ["python-3.9"],
 ]
 
+# NOTE: Do not build in debug mode since TBB and other dependencies are not built in debug
 # If want to use Ninja, run:
-# rez-build -i --cmake-build-system "ninja" --bt Debug
-# rez-release --cmake-build-system "ninja" --bt Debug
-#
-# Pass cmake arguments (with debug symbols):
-# rez-build -i --bt Debug
-# rez-release --bt Debug
+# rez-build -i --cmake-build-system "ninja"
+# rez-release --cmake-build-system "ninja"
 
 uuid = "repository.USD"
 
