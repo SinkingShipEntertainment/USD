@@ -100,6 +100,9 @@
 
 include(FindPackageHandleStandardArgs)
 
+message("TBB_INSTALL_DIR: $ENV{TBB_INSTALL_DIR}")
+message("TBBROOT: $ENV{TBBROOT}")
+
 
 if(NOT TBB_FOUND)
 

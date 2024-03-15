@@ -26,7 +26,6 @@
 # -------------------------
 # REZ
 # -------------------------
-set(TBB_ROOT_DIR $ENV{REZ_TBB_ROOT})
 set(ALEMBIC_DIR $ENV{REZ_ALEMBIC_ROOT})
 # -------------------------
 
