@@ -24,6 +24,7 @@ requires = [
     "numpy",
     "PyOpenGL-3.1.7",
     "openexr-3.1.12",
+    "imath-3.1.5",
     "alembic-1.8.5",
     "OpenSubdiv-3.6.0",
     "materialx-1.38.9",
