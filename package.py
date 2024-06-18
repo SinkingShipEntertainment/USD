@@ -17,6 +17,7 @@ description = \
 with scope("config") as c:
     import os
     c.release_packages_path = os.environ["SSE_REZ_REPO_RELEASE_EXT"]
+    c.build_thread_count = 1  # we need to use just 1 core of the CPU
 
 requires = [
     "tbb-2020.3",
