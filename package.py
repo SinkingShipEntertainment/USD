@@ -37,7 +37,7 @@ requires = [
 
 private_build_requires = [
     "Jinja2",
-    "PySide2",
+    "PySide6",
 ]
 
 variants = [
