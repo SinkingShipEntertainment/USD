@@ -5,7 +5,7 @@ authors = [
 ]
 
 # NOTE: version = <usd_version>.sse.<sse_version>
-version = "23.11.sse.1.0.0"
+version = "23.11.sse.2.0.0"
 
 description = \
     """
@@ -21,7 +21,7 @@ with scope("config") as c:
 
 requires = [
     "tbb-2020.3",
-    "boost-1.76.0",
+    "boost-1.82",
     "numpy",
     "PyOpenGL-3.1.7",
     "openexr-3.1.12",
